@@ -171,7 +171,7 @@ jobs:
       # The .txt suffix enabled HTTP compression for free
       - name: Generate image split chunks and .meta file
         run: |
-          sudo split ${{ env.IMAGE_NAME }} ${{ env.DEPLOY_DIR }}/${{ env.IMAGE_NAME }}.c -a 6 -b 8M -x --additional-suffix=.txt
+          sudo split ${{ env.IMAGE_NAME }} ${{ env.DEPLOY_DIR }}/${{ env.IMAGE_NAME }}.c -a 6 -b 128K -x --additional-suffix=.txt
           sudo bash -c "stat -c%s ${{ env.IMAGE_NAME }} > ${{ env.DEPLOY_DIR }}/${{ env.IMAGE_NAME }}.meta"
       # This step updates the default index.html file by performing the following actions:
       #   1. Replaces all occurrences of IMAGE_URL with the URL to the image.
